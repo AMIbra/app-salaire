@@ -11,7 +11,7 @@
     loop:
       - httpd
       - php
-      - mariadb-server
+      
 
   - name: Demarrage du serveur apache
     systemd:
@@ -19,14 +19,12 @@
      state: started
     loop: 
       - httpd
-      - mariadb
+      
 
-  - name: Copie des fichiers php info
+  - name: Copie des fichiers php
     copy:
      src: "{{ item }}"
      dest: /var/www/html
-   loop:
-     - index.php
-     - create_db.php
+   
 
  
