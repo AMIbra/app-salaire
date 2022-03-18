@@ -1,0 +1,20 @@
+
+---
+
+- hosts: 192.168.13.132
+
+  tasks:
+  - name: Installation du serveur Apache et du PHP
+    yum:
+     name: "{{ item }}"
+     state: present
+    loop:
+      - httpd
+      - php
+
+  - name: Demarrage du serveur apache
+    systemd:
+     name: httpd
+     state: started
+
+
